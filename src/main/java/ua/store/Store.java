@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public class Store {
     private Map<String, Double> basket;
-    WareHouse wareHouse = WareHouse.getInstance();
+    private WareHouse wareHouse = WareHouse.getInstance();
 
     public Store() {
         basket = new HashMap<>();

@@ -1,5 +1,7 @@
 package ua.store;
 
+import java.util.Objects;
+
 public class Product {
     private String name;
     private double price;
@@ -8,6 +10,9 @@ public class Product {
 
 
     public Product(String name, double price, double promoPrice, double promoCount) {
+        if(Objects.isNull(name)){
+            throw new StoreException("Name of product cann't be null.");
+        }
         this.name = name;
         setPrice(price);
         setPromoPrice(promoPrice);
@@ -44,6 +49,19 @@ public class Product {
 
     public void setPromoCount(double promoCount) {
         this.promoCount = promoCount;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Objects.equals(name, product.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 
     @Override
